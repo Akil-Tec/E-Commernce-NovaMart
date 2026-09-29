@@ -72,8 +72,8 @@ export const ShopProvider: React.FC<{ children: React.ReactNode }> = ({ children
   // BUG 5 IMPLEMENTATION:
   // removeFromCart removes the wrong item by calculating index + 1
   const removeFromCart = (productId: string) => {
-    setCart(prevCart => {
-      const targetIndex = prevCart.findIndex(item => item.product.id === productId);
+  setCart(prevCart => prevCart.filter(item => item.product.id !== productId));
+};
       if (targetIndex === -1) return prevCart;
       
       // Intentionally buggy: removes item at (targetIndex + 1) instead of targetIndex
