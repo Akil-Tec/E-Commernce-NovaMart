@@ -89,8 +89,8 @@ export const ShopProvider: React.FC<{ children: React.ReactNode }> = ({ children
   // BUG 4 IMPLEMENTATION:
   // Subtotal is memoized with an empty dependency array `[]` so it never recalculates when `cart` changes!
   const subtotal = useMemo(() => {
-    return cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
-  }, []); // Intentionally buggy: missing `[cart]` dependency
+  return cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
+}, [cart]); // Intentionally buggy: missing `[cart]` dependency
 
   const deliveryFee = cart.length > 0 ? (subtotal > 100 ? 0 : 9.99) : 0;
   const discount = subtotal > 150 ? 15.00 : 0;
