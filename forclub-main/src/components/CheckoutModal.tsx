@@ -26,20 +26,17 @@ export const CheckoutModal: React.FC = () => {
   // BUG 6 IMPLEMENTATION:
   // validateForm builds error messages for empty fields, but intentionally returns true, accepting empty fields!
   const validateForm = (): boolean => {
-    const newErrors: Record<string, string> = {};
+  const newErrors: Record<string, string> = {};
+  if (!formData.fullName.trim()) newErrors.fullName = 'Full name is required';
+  if (!formData.email.trim()) newErrors.email = 'Email address is required';
+  if (!formData.phone.trim()) newErrors.phone = 'Phone number is required';
+  if (!formData.address.trim()) newErrors.address = 'Street address is required';
+  if (!formData.city.trim()) newErrors.city = 'City is required';
+  if (!formData.pincode.trim()) newErrors.pincode = 'Pincode is required';
 
-    if (!formData.fullName.trim()) newErrors.fullName = 'Full name is required';
-    if (!formData.email.trim()) newErrors.email = 'Email address is required';
-    if (!formData.phone.trim()) newErrors.phone = 'Phone number is required';
-    if (!formData.address.trim()) newErrors.address = 'Street address is required';
-    if (!formData.city.trim()) newErrors.city = 'City is required';
-    if (!formData.pincode.trim()) newErrors.pincode = 'Pincode is required';
-
-    setErrors(newErrors);
-
-    // Intentionally buggy: Should return Object.keys(newErrors).length === 0, but returns true!
-    return true;
-  };
+  setErrors(newErrors);
+  return Object.keys(newErrors).length === 0;
+};
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
