@@ -26,6 +26,7 @@ export const Header: React.FC = () => {
   // Typing updates searchInput, but clicking Search button or submitting form does NOT trigger the filtering operation!
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setSearchQuery(searchInput);
     // Intentionally buggy: search button does not update `searchQuery` with `searchInput`
     // setSearchQuery(searchInput); // Missing!
   };
