@@ -59,15 +59,15 @@ export const ShopProvider: React.FC<{ children: React.ReactNode }> = ({ children
   // BUG 3 IMPLEMENTATION:
   // updateQuantity attempts to modify item.quantity, but assigns item.quantity instead of newQuantity
   const updateQuantity = (productId: string, newQuantity: number) => {
-    if (newQuantity < 1) return;
-    setCart(prevCart =>
-      prevCart.map(item =>
-        item.product.id === productId
-          ? { ...item, quantity: item.quantity } // Intentionally buggy: should be quantity: newQuantity
-          : item
-      )
-    );
-  };
+  if (newQuantity < 1) return;
+  setCart(prevCart =>
+    prevCart.map(item =>
+      item.product.id === productId
+        ? { ...item, quantity: newQuantity }
+        : item
+    )
+  );
+};
 
   // BUG 5 IMPLEMENTATION:
   // removeFromCart removes the wrong item by calculating index + 1
