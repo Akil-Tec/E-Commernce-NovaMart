@@ -18,6 +18,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   // The "Add to Cart" button click handler on the product card does NOT add the product to cart!
   const handleAddToCartCard = (e: React.MouseEvent) => {
     e.stopPropagation();
+    addToCart(product);
     // Intentionally buggy: Add to cart call is omitted / missing!
     // addToCart(product); // Missing!
   };
