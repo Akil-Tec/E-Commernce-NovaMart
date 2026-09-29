@@ -50,7 +50,7 @@ export const ProductGrid: React.FC = () => {
         /* BUG 7 IMPLEMENTATION:
            `-space-y-16 sm:space-y-0` causes vertical overlap/collision of product cards on mobile viewports (<640px),
            while desktop (lg:grid-cols-4, md:grid-cols-3) and tablet remain visually correct! */
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 -space-y-16 sm:space-y-0">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
           {filteredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
